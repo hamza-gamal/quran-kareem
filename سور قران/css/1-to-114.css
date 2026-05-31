@@ -16,3 +16,15 @@ body
     text-align: center; 
     color: #e5e7eb;
 }
+.caption
+{
+background-color: #c2c2c2;
+height: 90%;
+padding: 10px;
+font-weight: bold;
+direction: rtl;
+font-family: "Amiri Quran", serif;
+font-size: 30px;
+width: 90%;
+margin: auto;
+}

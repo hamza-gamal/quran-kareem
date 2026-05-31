@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سورة</title>
+    <style>
+        body {
+            background-color: #1e1f22;
+            margin: auto;
+            direction: rtl;
+            padding: 30px 20px;
+            text-align: center;
+            font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+            color: #fff;
+        }
+
+        .box-start {
+            margin: auto;
+            background-color: #14214966;
+            margin-bottom: 30px;
+            width: 700px;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 30px;
+            position: relative;
+            border-radius: 20px;
+            border: 0.1px solid rgb(33, 57, 97);
+        }
+
+        .sura-name {
+            font-size: 2.5rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .sura-info {
+            color: rgb(96, 165, 250);
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgb(96, 165, 250);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            background-color: #17255466;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: rgb(59, 130, 246);
+        }
+
+        .ayat-container {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .aya {
+            background-color: #14214933;
+            border: 1px solid rgb(31, 41, 55);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 10px 0;
+            font-size: 1.4rem;
+            line-height: 2.2;
+            text-align: right;
+            color: #e5e7eb;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .aya:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            background-color: rgba(23, 37, 84, 0.2);
+        }
+
+        .aya-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #17255466;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: rgb(96, 165, 250);
+            font-size: 0.75rem;
+            margin-left: 10px;
+            font-family: ui-monospace, monospace;
+        }
+
+        .loading {
+            color: rgb(96, 165, 250);
+            font-size: 1.2rem;
+            margin-top: 50px;
+        }
+
+        .onecirkle {
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: #7275ff;
+            opacity: 0.15;
+            top: -50px;
+            left: -50px;
+            pointer-events: none;
+        }
+
+        .towcirkle {
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+            position: absolute;
+            right: -50px;
+            background-color: #7275ff;
+            bottom: -50px;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn">← العودة للرئيسية</a>
+
+    <div class="box-start">
+        <div class="onecirkle"></div>
+        <div class="towcirkle"></div>
+        <h1 class="sura-name" id="sura-name">جاري التحميل...</h1>
+        <p class="sura-info" id="sura-info"></p>
+    </div>
+
+    <div class="ayat-container" id="ayat-container">
+        <p class="loading">جاري تحميل السورة...</p>
+    </div>
+
+    <script>
+        const id = new URLSearchParams(window.location.search).get('id');
+
+        fetch(`https://api.alquran.cloud/v1/surah/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                const sura = data.data;
+
+                document.title = 'سورة ' + sura.name;
+                document.getElementById('sura-name').textContent = sura.name;
+                document.getElementById('sura-info').textContent =
+                    'عدد الآيات: ' + sura.numberOfAyahs + ' | ' +
+                    (sura.revelationType === 'Meccan' ? 'مكية' : 'مدنية');
+
+                const container = document.getElementById('ayat-container');
+                container.innerHTML = '';
+
+                sura.ayahs.forEach(aya => {
+                    const div = document.createElement('div');
+                    div.className = 'aya';
+                    div.innerHTML = `<span class="aya-number">${aya.numberInSurah}</span> ${aya.text}`;
+                    container.appendChild(div);
+                });
+            })
+            .catch(() => {
+                document.getElementById('ayat-container').innerHTML =
+                    '<p style="color:red">حدث خطأ في تحميل السورة، تحقق من الاتصال بالإنترنت</p>';
+            });
+    </script>
+
+</body>
+</html>
