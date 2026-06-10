@@ -1,208 +1,314 @@
 body {
-    background-color: #1e1f22;
-    margin: auto;
-    direction: rtl;
-    padding: 30px 0px;
-    text-align: center;
+  background-color: #1e1f22;
+  margin: auto; 
+  direction: rtl;
+    font-family: "Exo 2", sans-serif;
+  padding: 30px 0px;
+  text-align: center;
 }
 
 .box-start {
-    margin: auto;
-    direction: ltr;
-    background-color: #14214966;
-    margin-bottom: 30px;
-    width: 90%;
-    max-width: 700px;
-    overflow: hidden;
-    min-height: 350px;
-    height: auto;
-    padding-bottom: 25px;
-    position: relative;
-    border-radius: 20px;
-    border: 0.1px solid rgb(33, 57, 97);
+  margin: auto;
+  direction: ltr;
+  background-color: #14214966;
+  margin-bottom: 30px;
+  width: 90%;
+  max-width: 700px;
+  overflow: hidden;
+  min-height: 350px;
+  height: auto;
+  padding-bottom: 25px;
+  position: relative;
+  border-radius: 20px;
+  border: 0.1px solid rgb(33, 57, 97);
+}
+
+.link-portfolio {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 100;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.link-portfolio img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.7);
+  opacity: 0.85;
+  transition:
+    transform 0.3s ease-in-out,
+    filter 0.3s ease-in-out,
+    opacity 0.3s;
+}
+.link-portfolio::before {
+  content: "►";
+  position: absolute;
+  top: 15px; 
+  right: 42px; 
+  font-size: 12px;
+  color: #0f172a; 
+  text-shadow: 1px 0px 0px rgba(96, 165, 250, 0.4), 
+               0px 1px 0px rgba(96, 165, 250, 0.4), 
+               0px -1px 0px rgba(96, 165, 250, 0.4); 
+  z-index: 100000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0) translateX(5px);
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, visibility 0.25s;
+  transition-delay: 0.3s;
+}
+
+.link-portfolio::after {
+  content: "Hamza Gamal | Portfolio";
+  position: absolute;
+  top: 6px;
+  right: 53px;
+  background-color: #0f172a;
+  color: #ffffff;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(96, 165, 250, 0.4); 
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0) translateX(5px);
+  transition:
+    opacity 0.25s ease-in-out,
+    transform 0.25s ease-in-out,
+    visibility 0.25s;
+  transition-delay: 0.3s;
+}
+
+.link-portfolio:hover::before, 
+.link-portfolio:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) translateX(0);
+}
+.link-portfolio:hover {
+  border-color: rgba(96, 165, 250, 0.7);
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.4); 
+}
+
+.link-portfolio:hover img {
+  opacity: 1;
+  transform: scale(1.65);
+  filter: brightness(1) saturate(100%) invert(58%) sepia(88%) saturate(1623%)
+    hue-rotate(201deg) brightness(101%) contrast(97%);
+}
+
+
+
+@media (max-width: 480px) {
+  .link-portfolio::before,
+  .link-portfolio::after {
+    display: none;
+  }
 }
 
 .icon-Qran {
-    width: 35px;
-    height: 35px;
-    border: solid 1px #2e4779;
-    padding: 14px;
-    margin-bottom: -5px;
-    border-radius: 15px;
-    display: inline-flex;
-    animation: icon 1s infinite alternate;
-    background-color: rgba(33, 57, 97, 0.5);
+  width: 35px;
+  height: 35px;
+  border: solid 1px #2e4779;
+  padding: 14px;
+  margin-bottom: -5px;
+  border-radius: 15px;
+  display: inline-flex;
+  animation: icon 1s infinite alternate;
+  background-color: rgba(33, 57, 97, 0.5);
 }
 
 @keyframes icon {
-    0% { color: rgba(96, 165, 250, 0.4); }
-    100% { color: rgb(96, 165, 250); }
+  0% {
+    color: rgba(96, 165, 250, 0.4);
+  }
+  100% {
+    color: rgb(96, 165, 250);
+  }
 }
 
 input {
-    width: 75%;
-    height: 50px;
-    color: rgb(229, 231, 235);
-    background-color: rgba(0, 0, 0, 0.4);
-    border: solid 1px rgb(61, 61, 61);
-    direction: rtl;
-    padding: 3px 50px 3px 3px;
-    font-size: large;
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    border-radius: 15px;
+  width: 75%;
+  height: 50px;
+  color: rgb(229, 231, 235);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: solid 1px rgb(61, 61, 61);
+  direction: rtl;
+  padding: 3px 50px 3px 3px;
+  font-size: large;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border-radius: 15px;
 }
 
 .searsh {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 15%;
-    transform: translateY(-35px);
-    color: rgb(107, 114, 128);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 15%;
+  transform: translateY(-35px);
+  color: rgb(107, 114, 128);
 }
 
 .numper {
-    width: 90px;
-    height: 25px;
-    margin: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 33px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: .75rem;
-    color: rgb(96, 165, 250);
-    background-color: #17255466;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+  width: 90px;
+  height: 25px;
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 33px;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.75rem;
+  color: rgb(96, 165, 250);
+  background-color: #17255466;
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .onecirkle {
-    height: 180px;
-    width: 180px;
-    border-radius: 50%;
-    position: absolute;
-    background-color: #7275ff;
-    opacity: 0.15;
-    top: -50px;
-    left: -50px;
-    pointer-events: none;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #7275ff;
+  opacity: 0.15;
+  top: -50px;
+  left: -50px;
+  pointer-events: none;
 }
 
 .towcirkle {
-    height: 180px;
-    width: 180px;
-    border-radius: 50%;
-    position: absolute;
-    right: -50px;
-    background-color: #7275ff;
-    bottom: -50px;
-    opacity: 0.15;
-    pointer-events: none;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  position: absolute;
+  right: -50px;
+  background-color: #7275ff;
+  bottom: -50px;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .parent {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90%;
-    max-width: 750px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 750px;
 }
 
 .hikl {
-    display: inline-flex;
-    flex-direction: row;
-    background-color: rgba(17, 24, 39, 0.2);
-    width: calc(25% - 20px);
-    max-width: 120px;
-    min-width: 85px;
-    box-sizing: border-box;
-    height: 110px;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin: 8px;
-    color: #ffffff;
-    border-radius: 12px;
-    transition: 0.3s;
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    text-decoration: none;
-    font-size: 1rem;
-    border: 1px solid rgb(31, 41, 55);
+  display: inline-flex;
+  flex-direction: row;
+  background-color: rgba(17, 24, 39, 0.2);
+  width: calc(25% - 20px);
+  max-width: 120px;
+  min-width: 85px;
+  box-sizing: border-box;
+  height: 110px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 8px;
+  color: #ffffff;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid rgb(31, 41, 55);
 }
 
 a {
-    text-decoration: none;
-    margin: auto;
-    text-align: center;
+  text-decoration: none;
+  margin: auto;
+  text-align: center;
 }
 
 .hikl:hover {
-    background-color: rgba(23, 37, 84, 0.2);
-    color: rgb(83, 91, 242);
-    transform: scale(1.07);
-    animation: نبضة 1s infinite;
-    border: 2px solid rgb(59, 130, 246);
-}
-
-@keyframes نبضة {
-    0% { box-shadow: 0 0 1px rgb(59, 130, 246); }
-    50% { box-shadow: 0 0 10px rgb(59, 130, 246); }
-    100% { box-shadow: 0 0 1px rgb(59, 130, 246); }
+  background-color: rgba(23, 37, 84, 0.2);
+  color: rgb(83, 91, 242);
+  transform: scale(1.05);
+  border: 1.4px solid rgb(59, 130, 246);
 }
 
 .o-h {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: rgba(96, 165, 250, 0.6);
-    background-color: #3b82f60d;
-    width: 22px;
-    height: 20px;
-    padding-top: 2px;
-    border-radius: 6px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-    border: solid 1px #3b82f61a;
-    font-size: small;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgba(96, 165, 250, 0.6);
+  background-color: #3b82f60d;
+  width: 22px;
+  height: 20px;
+  padding-top: 2px;
+  border-radius: 6px;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    Liberation Mono,
+    Courier New,
+    monospace;
+  border: solid 1px #3b82f61a;
+  font-size: small;
 }
 
 .hikl:hover .o-h {
-    color: rgb(96, 165, 250);
+  color: rgb(96, 165, 250);
 }
 
 .aya {
-    position: absolute;
-    color: rgb(107, 114, 128);
-    bottom: 10px;
-    font-size: .75rem;
+  position: absolute;
+  color: rgb(107, 114, 128);
+  bottom: 10px;
+  font-size: 0.75rem;
 }
 
 /* ── موبايل ── */
 @media (max-width: 480px) {
-    .box-start {
-        width: 95%;
-        border-radius: 15px;
-    }
+  .box-start {
+    width: 95%;
+    border-radius: 15px;
+  }
 
-    input {
-        width: 78%;
-    }
+  input {
+    width: 78%;
+  }
 
-    .searsh {
-        right: 11%;
-    }
+  .searsh {
+    right: 11%;
+  }
 
-    .hikl {
-        width: calc(33% - 16px);
-        height: 95px;
-        margin: 6px;
-        font-size: 0.85rem;
-    }
+  .hikl {
+    width: calc(33% - 16px);
+    height: 95px;
+    margin: 6px;
+    font-size: 0.85rem;
+  }
 
-    .o-h {
-        font-size: 0.65rem;
-        width: 18px;
-        height: 18px;
-    }
+  .o-h {
+    font-size: 0.65rem;
+    width: 18px;
+    height: 18px;
+  }
 }
